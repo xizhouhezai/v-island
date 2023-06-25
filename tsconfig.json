@@ -1,0 +1,28 @@
+{
+  "compilerOptions": {
+    "module": "ES2022",
+    "outDir": "dist",
+    "rootDir": ".",
+    "target": "esnext",
+    "moduleResolution": "Node",
+    "esModuleInterop": true,
+    "baseUrl": "src",
+    "jsx": "preserve",
+    "paths": {
+      "shared/*": [
+        "shared/*"
+      ]
+    },
+    "types": [
+      "vite/client"
+    ]
+  },
+  "include": [
+    "./**/*.*",
+    "./shims-vue.d.ts"
+  ],
+  "exclude": [
+    "node_modules"
+  ],
+  "allowSyntheticDefaultImports": "true"
+}
