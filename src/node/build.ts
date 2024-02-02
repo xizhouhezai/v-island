@@ -21,7 +21,7 @@ export async function bundle(root: string, config: SiteConfig) {
       // base: isServer ? "./" : "/",
       plugins: await createVitePlugins(config),
       ssr: {
-        noExternal: ["vue-router"],
+        noExternal: ["vue-router", "lodash-es"],
         target: "webworker"
         // external: ["vue-router"]
       },

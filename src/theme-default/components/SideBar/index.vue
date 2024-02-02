@@ -47,7 +47,7 @@ import { PageData } from "shared/types";
 // import { toRefs } from "vue";
 
 import PageLink from "../Link/index.vue";
-import { SidebarGroup } from "../../../shared/types/index";
+// import { SidebarGroup } from "../../../shared/types/index";
 
 export default {
   name: "SideBar",
@@ -60,11 +60,12 @@ export default {
     const sideBarData = siteData.themeConfig?.sidebar;
     let pathName = ref("");
     let matchedSidebarKey: string;
-    let matchedSidebar: SidebarGroup[] = reactive([]);
+    let matchedSidebar = ref([]);
 
     watch(
       () => route.path,
       () => {
+        matchedSidebar.value = [];
         pathName.value = route.path;
         matchedSidebarKey = Object.keys(sideBarData).find((key) => {
           if (pathName.value.startsWith(key)) {
@@ -72,8 +73,8 @@ export default {
           }
         });
         sideBarData[matchedSidebarKey]
-          ? matchedSidebar.push(...sideBarData[matchedSidebarKey])
-          : matchedSidebar.push(...[]);
+          ? matchedSidebar.value.push(...sideBarData[matchedSidebarKey])
+          : matchedSidebar.value.push(...[]);
       },
       { deep: true, immediate: true }
     );

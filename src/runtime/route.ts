@@ -1,6 +1,6 @@
 import { createRouter as createVueRouter } from "vue-router";
 import { routes } from "island:routes";
-import { PageData } from "shared/types";
+import { Header, PageData } from "shared/types";
 import siteData from "island:site-data";
 
 // const routes = [
@@ -30,7 +30,8 @@ export async function initPageData(routePath: string): Promise<PageData> {
       pageType: moduleInfo.frontmatter?.pageType ?? "doc",
       siteData,
       pagePath: routePath,
-      frontmatter: moduleInfo.frontmatter
+      frontmatter: moduleInfo.frontmatter,
+      toc: moduleInfo.toc as Header[]
     };
   }
   return {
